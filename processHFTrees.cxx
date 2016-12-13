@@ -64,7 +64,7 @@ int main (){
 
   TTreeReader reader(mychain); //tree reader to process the data
   TTreeReaderValue<Int_t> nPVWithJet150(reader,"nPVWithJet150"); //branches to read
-  TTreeReaderValue<Int_t> nSVWith2Jets(reader,"nSVWith2Jets");
+  TTreeReaderValue<Int_t> nSVWith2Jets(reader,"nSVWith2Jets"); //datatypes for TTreeReaderValue<T>: get from tree data
   TTreeReaderValue<Double_t> EventWeight(reader,"EventWeight");
 
   while( reader.Next() ){ //selection of events
