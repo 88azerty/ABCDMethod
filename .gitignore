@@ -27,3 +27,7 @@
 *.exe
 *.out
 *.app
+
+# Data Files
+*.root
+*.txt
