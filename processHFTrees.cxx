@@ -100,5 +100,6 @@ int main (){
   cout<<"Expected D: "<<wnB/wnA*wnC<<endl;
 
   cout<<endl<<endl<<"All data processed."<<endl<<endl;
+  return 0;
 
 }

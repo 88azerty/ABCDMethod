@@ -6,6 +6,9 @@ CXXFLAGS = -O3 -Wall --exceptions `root-config --ldflags --cflags` -I./
 process: processHFTrees.cxx
 	$(CXX) processHFTrees.cxx -o processHFTrees.out $(CXXFLAGS) $(LIBS)
 
+check: checkPVLeadingJet_pt.cxx
+	$(CXX) checkPVLeadingJet_pt.cxx -o checkPVLeadingJet_pt.out $(CXXFLAGS) $(LIBS)
+
 clean:
-	rm -f processHFTrees.out
+	rm -f *.out
 	rm -f *~
