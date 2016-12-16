@@ -7,5 +7,5 @@ process: processHFTrees.cxx
 	$(CXX) processHFTrees.cxx -o processHFTrees.out $(CXXFLAGS) $(LIBS)
 
 clean:
-	rm -f processHFTrees
+	rm -f processHFTrees.out
 	rm -f *~
