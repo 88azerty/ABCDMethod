@@ -49,11 +49,11 @@ int main() {
   cout<<"TChain has "<<mychain->GetEntries()<< " entries."<<endl;
   TTreeReader reader(mychain); //tree reader to process the data
   TTreeReaderValue<Double_t> PVLeadingJet_pt(reader,"PVLeadingJet_pt"); //branches to read
-  TTreeReaderValue<Double_t> EventWeight(reader,"EventWeight");
+  TTreeReaderValue<Double_t> LumiWeight(reader,"LumiWeight");
 
-  TH1D *histo = new TH1D("histo","Histogram of PV-LeadingJet_pt * EventWeight",500,0,0);
+  TH1D *histo = new TH1D("histo","Histogram of PV-LeadingJet_pt, weighted by LumiWeight",500,0,0);
   while( reader.Next() ){
-    histo->Fill(*PVLeadingJet_pt * *EventWeight);
+    histo->Fill(*PVLeadingJet_pt, *LumiWeight);
   }
 
   TFile f("histos.root","RECREATE");
