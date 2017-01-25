@@ -9,6 +9,9 @@ process: processHFTrees.cxx
 check: checkPVLeadingJet_pt.cxx
 	$(CXX) checkPVLeadingJet_pt.cxx -o checkPVLeadingJet_pt.out $(CXXFLAGS) $(LIBS)
 
+basic: basicHandlingFullROOT.cxx
+	$(CXX) basicHandlingFullROOT.cxx -o basicHandlingFullROOT.out $(CXXFLAGS) $(LIBS)
+
 clean:
 	rm -f *.out
 	rm -f *~
