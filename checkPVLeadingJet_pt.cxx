@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <fstream>
 #include <TFile.h>
@@ -59,6 +60,7 @@ int main() {
   TFile f("histos.root","RECREATE");
   histo->Write();
   f.Write();
+  f.Close();
 
   cout<<endl<<"Finished."<<endl;
   return 0;

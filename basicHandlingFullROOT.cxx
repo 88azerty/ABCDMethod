@@ -23,6 +23,7 @@
 #include "TCut.h"
 #include <TTree.h>
 #include <TTreeReader.h>
+#include <TTreeReaderArray.h>
 
 using namespace std;
 
@@ -48,6 +49,27 @@ int main (){
   }
 
   cout<<"TChain has "<<mychain->GetEntries()<< " entries."<<endl;
+
+  TTreeReader reader(mychain); //tree reader to process the data
+  TTreeReaderValue<std::vector<std::vector<Double_t>>> RecoJet_pt(reader,"RecoJet_pt"); //branches to read
+  //TTreeReaderArray<Double_t> RecoJet_pt_proper(reader,"RecoJet_pt.values");
+
+  TH1D *pt = new TH1D("pt", "Pt of ensemble",100, 0,0);
+
+  long int count = 0;
+  while( reader.Next() ){ //selection of events
+    cout<<"Processing event "<<count<<endl;
+    cout<<"Size of RecoJet_pt: "<<(RecoJet_pt->at(0)).size()<<endl<<endl;
+//    for (int iPt= 0, nPt= (RecoJet_pt->at(9)).size(); iPt < nPt; ++iPt){
+//      pt->Fill((RecoJet_pt->at(9)).at(iPt));
+//    }
+    count++;
+  }
+
+  TFile f("histos.root","RECREATE");
+  pt->Write();
+  f.Write();
+  f.Close();
 
   return 0;
 }
